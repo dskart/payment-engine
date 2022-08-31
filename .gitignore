@@ -1,0 +1,15 @@
+in.csv
+out.csv
+accounts.csv
+transactions.csv
+dump.rdb
+config.yaml
+
+/target
+
+!Pipfile
+!Pipfile.lock
+__pycache__/
+*.py[cod]
+*$py.class
+.Python

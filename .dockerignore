@@ -1,0 +1,13 @@
+/.git
+/config.yaml
+/*Docker
+*/tests
+*.rdb
+
+/target
+
+
+/.pylintrc
+/pyproject.toml
+/Pipfile
+/Pipfile.lock

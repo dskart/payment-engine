@@ -6,6 +6,7 @@ use std::{os::unix::io::AsRawFd, path::Path};
 
 pub mod config;
 use config::*;
+mod ascii_art;
 pub mod process_csv;
 pub mod serve;
 
@@ -31,7 +32,7 @@ pub async fn exec(logger: slog::Logger, matches: &clap::ArgMatches) -> Result<()
         Config::default()
     };
 
-    config.load_from_env("PE_").await?;
+    config.load_from_env("PS_").await?;
     config.validate()?;
 
     match matches.subcommand() {

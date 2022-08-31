@@ -1,11 +1,14 @@
-/.git
-/config.yaml
-/*Docker
+/aws
 */tests
+/.git
+/.gitignore
+/.dockerignore
+/Dockerfile
+/target
+config.yaml
 *.rdb
 
 /target
-
 
 /.pylintrc
 /pyproject.toml

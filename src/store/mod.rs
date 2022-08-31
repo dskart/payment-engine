@@ -112,7 +112,6 @@ impl Store<dynstore::Backend> {
         let backend = if config.in_memory {
             dynstore::Backend::Memory(memorystore::Backend::new())
         } else if let Some(addr) = &config.redis_address {
-            println!("REDIS");
             dynstore::Backend::Redis(redisstore::Backend::new(redis::Client::open(("redis://".to_string() + addr).as_str())?))
         } else if let Some(config) = &config.dynamodb {
             use keyvaluestore::rusoto_core::{region::Region, request::HttpClient};

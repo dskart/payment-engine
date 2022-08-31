@@ -1,4 +1,4 @@
-use crate::{api::API, app, cmd::Config, Result};
+use crate::{api::API, app, cmd::ascii_art::LOGO, cmd::Config, Result};
 use clap::Arg;
 
 pub const CMD_NAME: &str = "serve";
@@ -15,11 +15,13 @@ pub fn cmd<'a>() -> clap::Command<'a> {
 }
 
 pub async fn run(logger: slog::Logger, config: Config, matches: &clap::ArgMatches) -> Result<()> {
+    println!("{}", LOGO);
+
     let port = clap::value_t!(matches, "port", u16)?;
-
     let app = app::App::new_with_config(config.app).await?;
-    let api = API::new(logger, app);
+    let api = API::new(logger.clone(), app);
 
+    info!(logger, "listening at http://127.0.0.1:{}", port);
     let r = api.rocket(port)?;
     let _ = r.launch().await?;
 

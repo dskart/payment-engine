@@ -1,14 +1,14 @@
 version: "3"
 services:
-  paymet-service:
+  payment-service:
     build: .
-    command: -- serve -p 8080
+    command: serve 
     ports:
-      - "8080:8080"
+      - 8080:8080
     environment:
-      - PS_APP_STORE_REDISADDRESS=http://redis:6379
+      - PS_APP_STORE_REDISADDRESS=redis:6379
   redis:
     image: "redis:alpine"
     command: redis-server
     ports:
-      - "6379:6379"
+      - 6379:6379

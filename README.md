@@ -1,6 +1,8 @@
-# Payment Engine :bank:
+# Payment Engine :money_with_wings:
 
-This is a simple payment engine toy. It takes in a series of transactions (more detail about transactions here: [transactions.md](./transactions.md)) and popluate client accounts depending on those transactions.
+![atm.gif](./atm.gif)
+
+This is a simple payment engine toy. It takes in a series of transactions (more detail about transactions here: [transactions.md](./transactions.md)) and popluate clients accounts depending on those transactions.
 
 Clients can be repesented like so:
 
@@ -15,7 +17,7 @@ Make sure to have rust installed on your computer to run this app
 
 ## Running As A Simple Enginer
 
-You can simply run this engine by passing in a `.cvs` file full of transactions like so:
+You can simply run this engine by passing in a `.csv` file full of transactions like so:
 
 ```bash
 cargo run -- transactions.csv > accounts.csv
@@ -70,11 +72,11 @@ This will serve the service on [http://localhost:8080/](http://localhost:8080/)
 
 #### /healthz
 
-- `GET /healthz` healtz
+- `GET /healthz` healthz
 
 ### Stores
 
-You can configure 3 types of stores backend for your engine:
+You can configure 3 types of store backend for your engine:
 
 - In Memory (great for unit/integrationtesting)
 - Redis (great for local dev)

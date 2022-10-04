@@ -45,7 +45,8 @@ pub async fn set_up_logger_and_exec() -> i32 {
     let matches = clap::Command::new("payment-engine")
         .about("This is a toy payment engine.")
         .version(env!("CARGO_PKG_VERSION"))
-        .arg(Arg::new("debug").short('d').long("debug").help("makes the logs more verbose"))
+        .arg(Arg::new("debug").short('d').long("debug").help("makes the logs more verbose with debug"))
+        .arg(Arg::new("verbose").short('v').long("verbose").help("makes the logs more verbose with infor"))
         .arg(
             Arg::new("config")
                 .long("config")
@@ -68,7 +69,13 @@ pub async fn set_up_logger_and_exec() -> i32 {
 
     let drain = slog_async::Async::new(drain.fuse())
         .build()
-        .filter_level(if matches.is_present("debug") { slog::Level::Debug } else { slog::Level::Info })
+        .filter_level(if matches.is_present("debug") {
+            slog::Level::Debug
+        } else if matches.is_present("verbose") {
+            slog::Level::Info
+        } else {
+            slog::Level::Error
+        })
         .fuse();
 
     let logger = slog::Logger::root(drain, o!());

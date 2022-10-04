@@ -33,7 +33,6 @@ pub async fn exec(logger: slog::Logger, matches: &clap::ArgMatches) -> Result<()
     };
 
     config.load_from_env("PS_").await?;
-    config.validate()?;
 
     match matches.subcommand() {
         Some((serve::CMD_NAME, sub_match)) => serve::run(logger, config, sub_match).await,

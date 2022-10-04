@@ -15,6 +15,8 @@ pub fn cmd<'a>() -> clap::Command<'a> {
 }
 
 pub async fn run(logger: slog::Logger, config: Config, matches: &clap::ArgMatches) -> Result<()> {
+    config.validate()?;
+
     println!("{}", LOGO);
 
     let port = clap::value_t!(matches, "port", u16)?;

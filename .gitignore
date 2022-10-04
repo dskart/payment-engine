@@ -4,6 +4,7 @@ accounts.csv
 transactions.csv
 dump.rdb
 config.yaml
+*.yaml
 
 /target
 
